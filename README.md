@@ -28,19 +28,20 @@ We welcome contributions from the community! To get started:
    ```bash
    git clone https://github.com/your-username/LecturaX.git
    ```
-   
-3. Create a new branch for your feature or bug fix.
-  ```bash
-  git checkout -b feature-name
-  ```
-
+3. **Create a new branch** for your feature or bug fix.
+   ```bash
+   git checkout -b feature-name
+   ```
 4. Make your changes and commit them with a clear message.
-  ```bash
-  git commit -m "Add new feature: description"
-  ```
+
+```bash
+git commit -m "Add new feature: description"
+```
 
 5. Push your changes to your fork.
-  ```bash
-  git push origin feature-name
-  ```
+
+```bash
+git push origin feature-name
+```
+
 6. Create a pull request to have your changes reviewed and merged.
