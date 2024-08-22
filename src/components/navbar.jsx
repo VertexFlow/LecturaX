@@ -8,8 +8,8 @@ const Navbar = () => {
 		setIsOpen(!isOpen);
 	};
 
-	const handleLogin = () => {
-		window.location.href = "/login";
+	const handleSignIn = () => {
+		window.location.href = "/signin";
 	};
 
 	return (
@@ -44,16 +44,16 @@ const Navbar = () => {
 						Contact
 					</a>
 					<div className="navbar-login" id="login-mobile">
-						<button className="login-button" onClick={handleLogin}>
-							Login
+						<button className="login-button" onClick={handleSignIn}>
+							SignIn
 						</button>
 					</div>
 				</div>
 
 				{/* Login Button */}
 				<div className="navbar-login" id="login-btn">
-					<button className="login-button" onClick={handleLogin}>
-						Login
+					<button className="login-button" onClick={handleSignIn}>
+						SignIn
 					</button>
 				</div>
 			</div>
