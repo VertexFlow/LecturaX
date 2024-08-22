@@ -49,7 +49,7 @@
 }
 
 .nav-link {
-    margin: 0 20px;
+    padding: 0.5rem 1rem;
     color: #ffffff;
     text-decoration: none;
     font-size: 1rem;
@@ -79,10 +79,18 @@
     background-color: #2b6cb0;
 }
 
+#login-btn {
+    display: block;
+}
+
+#login-mobile {
+    display: none;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .menu-toggle {
-        display: block !important;
+        display: block;
     }
 
     .navbar-links {
@@ -113,5 +121,13 @@
         padding: 12px 0;
         width: 100%;
         text-align: center;
+    }
+
+    #login-mobile {
+        display: block;
+    }
+
+    #login-btn {
+        display: none;
     }
 }
