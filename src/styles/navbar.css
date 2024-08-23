@@ -1,0 +1,133 @@
+/* Navbar Container */
+.navbar {
+    background-color: #1a202c;
+    color: #ffffff;
+    padding: 12px 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Inner Container */
+.navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.navbar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+/* Hamburger Menu (for Mobile) */
+.menu-toggle {
+    display: none;
+}
+
+.menu-button {
+    color: #ffffff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.menu-icon {
+    height: 24px;
+    width: 24px;
+    fill: currentColor;
+}
+
+/* Navigation Links */
+.navbar-links {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #a0aec0;
+}
+
+/* Login Button */
+.navbar-login {
+    margin-left: auto;
+}
+
+.login-button {
+    background-color: #3182ce;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.login-button:hover {
+    background-color: #2b6cb0;
+}
+
+#login-btn {
+    display: block;
+}
+
+#login-mobile {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .navbar-links {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #1a202c;
+        padding: 16px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .nav-link {
+        margin: 12px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar-login {
+        margin-left: 0;
+        padding: 12px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    #login-mobile {
+        display: block;
+    }
+
+    #login-btn {
+        display: none;
+    }
+}
