@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 import requests
 import json
 import pdfplumber
@@ -18,13 +19,10 @@ from bs4 import BeautifulSoup
 import ollama
 from io import BytesIO
 
+app = Flask(__name__)
+CORS(app)  # Enable CORS to allow requests from your Express app
 
 
-"""
-def index(request):
-    context={}
-    return render(request, "myApp/index.html", context)
-"""
 # Function to send a chat message to the Ollama model and get a response
 def analyze_and_chat_with_emo(text, query):
     # Use the Ollama API to get a response from the llama3.1 model
@@ -147,9 +145,36 @@ def google_search(query):
     
     return search_results
 
+@app.route('/process', methods=['POST'])
+def process():
+    data = request.json
+    input_source = data['input_source']
+    input_type = data['input_type']
+    query = data['query']
+    target_language = data['target_language']
+
+    # Process the input
+    extracted_text = extract_text_with_pdfplumber(input_source) if input_type == 'pdf' else "Invalid input type"
+    structured_text = extracted_text.split('\n\n')
+    
+    entities, keywords = process_query(query)
+    relevant_paragraphs = find_relevant_paragraphs(keywords, structured_text)
+    translated_query = translate_text(query, target_language)
+    emo_response = analyze_and_chat_with_emo(extracted_text, query)
+
+    # Build the response
+    response = {
+        'relevant_paragraphs': relevant_paragraphs,
+        'translated_query': translated_query,
+        'emo_response': emo_response
+    }
+
+    return jsonify(response)
+
+
 # Define the environment (simplified for the example)
 class ChatbotEnv:
-    def _init_(self):
+    def __init__(self):
         self.state_space = 10
         self.action_space = 2
         self.state = np.zeros(self.state_space)  # Initialize state as an array with zeros
@@ -170,8 +195,8 @@ class ChatbotEnv:
 
 # Neural Network Model
 class DQN(nn.Module):
-    def _init_(self, state_space, action_space):
-        super(DQN, self)._init_()
+    def __init__(self, state_space, action_space):
+        super(DQN, self).__init__()
         self.fc1 = nn.Linear(state_space, 24)  # Ensure state_space matches the environment
         self.fc2 = nn.Linear(24, 24)
         self.fc3 = nn.Linear(24, action_space)
@@ -183,7 +208,7 @@ class DQN(nn.Module):
 
 # DQN Agent
 class DQNAgent:
-    def _init_(self, state_space, action_space):
+    def __init__(self, state_space, action_space):
         self.state_space = state_space
         self.action_space = action_space
         self.memory = deque(maxlen=2000)
@@ -310,99 +335,5 @@ target_language = 'hi'
 
 main(input_source, input_type, query, target_language)
 
-
-from django.shortcuts import render
-from django.http import JsonResponse, HttpResponseBadRequest
-import os
-from .models import UploadedFile
-from .forms import UploadFileForm
-from django.core.files.storage import default_storage
-import pdfplumber
-import pytesseract
-from pdf2image import convert_from_path
-import cv2
-import numpy as np
-import spacy
-from transformers import BertTokenizer, BertModel
-from deep_translator import GoogleTranslator
-import ollama
-from bs4 import BeautifulSoup
-
-# Load models and initialize tools
-tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-model = BertModel.from_pretrained('bert-base-uncased')
-nlp = spacy.load('en_core_web_sm')
-
-def index(request):
-    return render(request, 'index.html')
-#flask
-
-def upload_pdf(request):
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            file = form.cleaned_data['file']
-            filename = default_storage.save(f'uploads/{file.name}', file)
-            file_path = default_storage.path(filename)
-            extracted_text = extract_text_with_pdfplumber(file_path)
-            request.session['pdf_text'] = extracted_text
-            return JsonResponse({'text': extracted_text}, status=200)
-        else:
-            return JsonResponse({'error': 'Invalid file type'}, status=400)
-    return HttpResponseBadRequest('Invalid request method')
-
-def fetch_content(request):
-    if request.method == 'POST':
-        url = request.POST.get('url')
-        if not url:
-            return JsonResponse({'error': 'No URL provided'}, status=400)
-
-        extracted_text = fetch_and_process_content(url)
-        return JsonResponse({'text': extracted_text}, status=200)
-    return HttpResponseBadRequest('Invalid request method')
-
-def query(request):
-    if request.method == 'POST':
-        query = request.POST.get('query')
-        target_language = request.POST.get('target_language')
-        input_source = request.POST.get('input_source')
-        input_type = request.POST.get('input_type')
-
-        if not all([query, target_language, input_source, input_type]):
-            return JsonResponse({'error': 'Missing parameters'}, status=400)
-
-        if input_type == 'url':
-            extracted_text = fetch_and_process_content(input_source)
-        elif input_type == 'pdf':
-            extracted_text = extract_text_with_pdfplumber(input_source)
-        else:
-            return JsonResponse({'error': 'Invalid input type'}, status=400)
-
-        structured_text = structure_text(extracted_text)
-        entities, keywords = process_query(query)
-        relevant_paragraphs = find_relevant_paragraphs(keywords, structured_text)
-        translated_query = translate_text(query, target_language)
-        google_results = google_search(query)
-        emo_response = analyze_and_chat_with_emo(extracted_text, query)
-
-        return JsonResponse({
-            'relevant_paragraphs': relevant_paragraphs,
-            'google_results': google_results,
-            'translated_query': translated_query,
-            'emo_response': emo_response
-        }, status=200)
-    return HttpResponseBadRequest('Invalid request method')
-
-def live_chat(request):
-    if request.method == 'POST':
-        query = request.POST.get('query')
-        if not query:
-            return JsonResponse({'error': 'No query provided'}, status=400)
-
-        pdf_text = request.session.get('pdf_text', None)
-        if not pdf_text:
-            return JsonResponse({'error': 'No PDF text available. Please upload a PDF first.'}, status=400)
-
-        response = analyze_and_chat_with_emo(pdf_text, query)
-        return JsonResponse({'response': response}, status=200)
-    return HttpResponseBadRequest('Invalid request method')
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000)

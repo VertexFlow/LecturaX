@@ -7,7 +7,7 @@ function App() {
 	return (
 		<>
 			<Navbar />
-			<Signup />
+			<Signin />
 		</>
 	);
 }

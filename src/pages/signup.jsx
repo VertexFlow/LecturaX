@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "../styles/login.css"; // Import the CSS file
+import { v4 as uuidv4 } from "uuid";
 
 const Signup = () => {
 	const icon = useRef();
@@ -7,7 +8,7 @@ const Signup = () => {
 	const pswdField = useRef();
 	const pswdField_c = useRef();
 	const [form, setForm] = useState({
-		name: "",
+		username: "",
 		email: "",
 		password: "",
 		c_password: "",
@@ -36,12 +37,12 @@ const Signup = () => {
 		setRole(e.target.value);
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		console.log(form);
 		console.log(role);
 		setForm({
-			name: "",
+			username: "",
 			email: "",
 			password: "",
 			c_password: "",
@@ -51,24 +52,11 @@ const Signup = () => {
 			alert("Passwords do not match");
 			return;
 		}
-
-		// fetch("/user/signup", {
-		// 	method: "POST",
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// 	body: JSON.stringify(form),
-		// })
-		// 	.then((res) => res.json())
-		// 	.then((data) => {
-		// 		if (data.error) {
-		// 			alert(data.error);
-		// 		} else {
-		// 			alert(data.message);
-		// 			window.location.href = "/user/signin";
-		// 		}
-		// 	})
-		// 	.catch((err) => console.log(err));
+		let res = await fetch("http://localhost:3000/signup", {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify({ ...form, role, id: uuidv4() }),
+		});
 	};
 
 	return (
@@ -76,13 +64,13 @@ const Signup = () => {
 			<img className="auth-bg" src="/assets/signin.jpg" alt="login" />
 			<div className="auth-container">
 				<div className="home-link">
-					<a href="/" style={{ color: "#000" }}>
+					<a href="../" style={{ color: "#000" }}>
 						&larr; Back to Home
 					</a>
 				</div>
 				<h1 className="auth-title">Create Your Account</h1>
 				<div className="form-wrapper">
-					<form method="post" action="/user/signup">
+					<form method="post" action="/signup">
 						<div className="container">
 							<div className="tabs">
 								<input
@@ -111,17 +99,17 @@ const Signup = () => {
 							</div>
 						</div>
 						<div className="form-group">
-							<label className="form-label" htmlFor="name">
+							<label className="form-label" htmlFor="username">
 								Username
 							</label>
 							<img src="/assets/user.svg" alt="user" className="input-icon" />
 							<input
 								type="name"
 								className="form-control"
-								id="name"
+								id="username"
 								placeholder="username"
-								name="name"
-								value={form.name}
+								name="username"
+								value={form.username}
 								required
 								onChange={handleChange}
 							/>
@@ -208,7 +196,7 @@ const Signup = () => {
 					<div className="additional-links">
 						<div className="register-link">
 							Already have an account?{" "}
-							<a href="/user/signin">
+							<a href="/signin">
 								<b>SignIn</b>
 							</a>
 						</div>
