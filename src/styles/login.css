@@ -104,3 +104,66 @@
     color: #23272b !important;
     text-decoration: underline;
 }
+
+/* Role Selector */
+.tabs {
+    width: 50%;
+    margin: 0.25rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background-color: #fff;
+    padding: 0.5rem 2rem;
+    border-radius: 99px;
+}
+
+.tabs * {
+    z-index: 2;
+}
+
+.container input[type="radio"] {
+    display: none;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    font-size: 1rem;
+    color: black;
+    font-weight: 500;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: color 0.15s ease-in;
+}
+
+.container input[type="radio"]:checked+label {
+    color: #185ee0;
+}
+
+.container input[id="student"]:checked~.glider {
+    transform: translateX(-10%);
+}
+
+.container input[id="teacher"]:checked~.glider {
+    transform: translateX(185%);
+}
+
+.glider {
+    position: absolute;
+    display: flex;
+    height: 2rem;
+    width: 5.25rem;
+    background-color: #e6eef9;
+    z-index: 1;
+    border-radius: 99px;
+    transition: 0.5s ease-out;
+}
+
+@media (max-width: 700px) {
+    .tabs {
+        transform: scale(0.6);
+    }
+}
