@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/login.css"; // Import the CSS file
 
 const Signin = () => {
+	const icon = useRef();
+	const pswdField = useRef();
+	const showPassword = () => {
+		if (pswdField.current.type === "password") {
+			pswdField.current.type = "text";
+			icon.current.src = "/assets/show-eye.svg";
+		} else {
+			pswdField.current.type = "password";
+			icon.current.src = "/assets/hide-eye.svg";
+		}
+	};
+
 	return (
 		<section className="auth-section">
 			<img className="auth-bg" src="/assets/signin.jpg" alt="login" />
@@ -33,10 +45,16 @@ const Signin = () => {
 								Password
 							</label>
 							<img src="/assets/lock.svg" alt="lock" className="input-icon" />
-							<span id="pswd-toggle1">
-								<i className="pswd-toggle fas fa-eye-slash"></i>
+							<span onClick={showPassword}>
+								<img
+									ref={icon}
+									src="/assets/hide-eye.svg"
+									alt="hidden"
+									className="pswd-toggle"
+								/>
 							</span>
 							<input
+								ref={pswdField}
 								type="password"
 								className="form-control"
 								id="password"

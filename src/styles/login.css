@@ -23,7 +23,7 @@
 .auth-title {
     text-align: center;
     margin: 0;
-    padding: 3rem 0;
+    padding: 3rem 0 0 0;
     font-size: 2rem;
     font-weight: bold;
 }
@@ -36,7 +36,7 @@
 
 /* Form Group */
 .form-group {
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     position: relative;
 }
 
@@ -60,6 +60,14 @@
     top: 2.5rem;
     left: 10px;
     opacity: 0.5;
+}
+
+.pswd-toggle {
+    position: absolute;
+    top: 2.75rem;
+    right: 1rem;
+    opacity: 0.75;
+    cursor: pointer;
 }
 
 /* Submit Button */

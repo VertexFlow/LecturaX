@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../styles/login.css"; // Import the CSS file
 
 const Signup = () => {
+	const icon = useRef();
+	const icon_c = useRef();
+	const pswdField = useRef();
+	const pswdField_c = useRef();
+	function showPassword(icon, pswd) {
+		if (pswd.current.type === "password") {
+			pswd.current.type = "text";
+			icon.current.src = "/assets/show-eye.svg";
+		} else {
+			pswd.current.type = "password";
+			icon.current.src = "/assets/hide-eye.svg";
+		}
+	}
+
 	return (
 		<section className="auth-section">
 			<img className="auth-bg" src="/assets/signin.jpg" alt="login" />
@@ -51,10 +65,16 @@ const Signup = () => {
 								Password
 							</label>
 							<img src="/assets/lock.svg" alt="lock" className="input-icon" />
-							<span id="pswd-toggle1">
-								<i className="pswd-toggle fas fa-eye-slash"></i>
+							<span onClick={() => showPassword(icon, pswdField)}>
+								<img
+									ref={icon}
+									src="/assets/hide-eye.svg"
+									alt="hidden"
+									className="pswd-toggle"
+								/>
 							</span>
 							<input
+								ref={pswdField}
 								type="password"
 								className="form-control"
 								id="password"
@@ -68,10 +88,16 @@ const Signup = () => {
 								Confirm Password
 							</label>
 							<img src="/assets/lock.svg" alt="lock" className="input-icon" />
-							<span id="pswd-toggle1">
-								<i className="pswd-toggle fas fa-eye-slash"></i>
+							<span onClick={() => showPassword(icon_c, pswdField_c)}>
+								<img
+									ref={icon_c}
+									src="/assets/hide-eye.svg"
+									alt="hidden"
+									className="pswd-toggle"
+								/>
 							</span>
 							<input
+								ref={pswdField_c}
 								type="password"
 								className="form-control"
 								id="password_confirm"
