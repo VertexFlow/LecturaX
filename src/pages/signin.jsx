@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import "../styles/login.css"; // Import the CSS file
+import { Link } from "react-router-dom";
 
 const Signin = () => {
 	const icon = useRef();
@@ -48,9 +49,9 @@ const Signin = () => {
 			<img className="auth-bg" src="/assets/signin.jpg" alt="login" />
 			<div className="auth-container">
 				<div className="home-link">
-					<a href="../" style={{ color: "#000" }}>
+					<Link to="../" style={{ color: "#000" }}>
 						&larr; Back to Home
-					</a>
+					</Link>
 				</div>
 				<h1 className="auth-title">SignIn</h1>
 				<div className="form-wrapper">
@@ -97,7 +98,7 @@ const Signin = () => {
 							/>
 						</div>
 						<div className="forgot-password-link">
-							<a href="/forgot-password">Forgot Password</a>
+							<Link to="/forgot-password">Forgot Password</Link>
 						</div>
 						<button
 							type="submit"
@@ -111,9 +112,9 @@ const Signin = () => {
 					<div className="additional-links">
 						<div className="register-link">
 							Don't have an account?{" "}
-							<a href="/signup">
+							<Link to="/signup">
 								<b>SignUp</b>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../styles/login.css"; // Import the CSS file
 import { v4 as uuidv4 } from "uuid";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
 	const icon = useRef();
@@ -64,9 +65,9 @@ const Signup = () => {
 			<img className="auth-bg" src="/assets/signin.jpg" alt="login" />
 			<div className="auth-container">
 				<div className="home-link">
-					<a href="../" style={{ color: "#000" }}>
+					<Link to="../" style={{ color: "#000" }}>
 						&larr; Back to Home
-					</a>
+					</Link>
 				</div>
 				<h1 className="auth-title">Create Your Account</h1>
 				<div className="form-wrapper">
@@ -196,9 +197,9 @@ const Signup = () => {
 					<div className="additional-links">
 						<div className="register-link">
 							Already have an account?{" "}
-							<a href="/signin">
+							<Link to="/signin">
 								<b>SignIn</b>
-							</a>
+							</Link>
 						</div>
 					</div>
 				</div>
