@@ -10,7 +10,7 @@ router.post("/signup", async function (req, res) {
 	try {
 		let { username, email, password } = req.body;
 
-		let user = await userModel.findOne({ email: email });
+		let user = await userModel.findOne({ username: username });
 		if (user)
 			return res.status(401).send("You already have an account,please login");
 
@@ -26,7 +26,7 @@ router.post("/signup", async function (req, res) {
 
 					let token = jwt.sign({ username, id: user._id }, "heyheyhey");
 					res.cookie("token", token);
-					res.send("User Created Successfully");
+					res.redirect("/dashboard");
 				}
 			});
 		});
@@ -46,9 +46,9 @@ router.post("/signin", async function (req, res) {
 			if (result) {
 				let token = jwt.sign({ username, id: user._id }, "heyheyhey");
 				res.cookie("token", token);
-				res.send("User loggedin Successfully");
+				res.send("/dashboard");
 			} else {
-				res.send("username or password incorrect");
+				res.send("/signin");
 			}
 		});
 	} catch (err) {}

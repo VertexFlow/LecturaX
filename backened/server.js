@@ -12,6 +12,7 @@ const User = require("./models/userModel.js");
 
 const userRouter = require("./routes/userRouter.js");
 
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 

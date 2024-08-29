@@ -5,6 +5,8 @@ import Signin from "./pages/signin";
 import Signup from "./pages/signup";
 // import Home from "./pages/home";
 import NoPage from "./pages/nopage";
+import Layout from "./components/layout";
+import Dashboard from "./pages/dashboard";
 
 function App() {
 	return (
@@ -15,8 +17,11 @@ function App() {
 						{/* <Route index element={<Home />} /> */}
 						<Route path="/signin" element={<Signin />} />
 						<Route path="/signup" element={<Signup />} />
-						<Route path="*" element={<NoPage />} />
 					</Route>
+					<Route path="/dashboard" element={<Layout />}>
+						<Route index element={<Dashboard />} />
+					</Route>
+					<Route path="*" element={<NoPage />} />
 				</Routes>
 			</BrowserRouter>
 		</>
