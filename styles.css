@@ -1,0 +1,221 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .Container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .Navbar {
+    display: flex;
+    background-color: #f5f5f5;
+    height: 15%;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+  }
+  
+  .main-content {
+    position: relative;
+    top: 15%;
+    height: 80%;
+    display: flex;
+  }
+  
+  .Side-bar {
+    width: 14%;
+    background-color: #f5f5f5;
+    position: fixed;
+    z-index: 1;
+    height: 100%;
+  }
+  
+  .right-page {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 14%;
+    width: 86%;
+  }
+  
+  .navbar-1 {
+    position: fixed;
+    width: 86%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: #80cbc4;
+    justify-content: space-around;
+    z-index: 2;
+  }
+  
+  .contents {
+    width: 80%;
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    justify-content: flex-end;
+  }
+  
+  .courses {
+    position: relative;
+    top: 15%;
+    background: linear-gradient(135deg, #e0f7fa, #b2ebf2);
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .box {
+    display: flex;
+    flex-direction: row;
+    overflow-y: auto;
+    height: 350px;
+    justify-content: space-evenly;
+  }
+  
+  .row h1 {
+    font-family: "Georgia", serif;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 70px;
+    padding-bottom: 40px;
+    color: #1a374d;
+    text-decoration: underline;
+    font-weight: 400;
+   
+  }
+  
+  .box-1 {
+    margin: 10px;
+    width: 300px;
+    gap: 10px;
+    border: 1px solid black;
+    background-color: #e8f5e9;
+    border: 1.5px solid #00796b;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .box-1:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .next {
+    margin-top: 100px;
+  }
+  
+  .contents a {
+    color: #00796b;
+    background-color: #e0f7fa;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid #00796b;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar-1 a {
+    color: #00796b;
+    background-color: #e0f7fa;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid #00796b;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .navbar-1 a:hover {
+    background-color: #004d40;
+    color: #e0f7fa;
+    border-color: #004d40;
+  }
+  
+  .contents a:hover {
+    background-color: #004d40;
+    color: #e0f7fa;
+    border-color: #004d40;
+  }
+  
+  /* Dropdown Menu */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #e0f7fa;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 3;
+  }
+  
+  .dropdown-content a {
+    color: #00796b;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #80cbc4;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #004d40;
+    color: #e0f7fa;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #004d40;
+    color: #e0f7fa;
+  }
+  
+  #pack{
+    background-image: url(./Image\ 3.png) ;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    padding-top: 10px;
+    font-weight: 800;
+  }
+
+  #outcomes{
+    background-image: url(./Image\ 2-2.png) ;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    padding-top: 10px;
+    font-weight: 800;
+  }
+
+  #material{
+    background-image: url(./Image\ 2.png) ;
+    background-size: cover;
+    color: white;
+    text-align: center;
+    font-size: x-large;
+    padding-top: 10px;
+    font-weight: 800;
+  }
