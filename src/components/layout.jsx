@@ -35,13 +35,13 @@ const Layout = ({ username = "Username" }) => {
 							<Link to="/dashboard/profile" className="profile-option">
 								View Profile
 							</Link>
-							<Link to="/" className="profile-option">
+							<Link to="/dashboard/profile" className="profile-option">
 								Edit Profile
 							</Link>
-							<Link to="/" className="profile-option">
+							<Link to="/dashboard/profile" className="profile-option">
 								Change Password
 							</Link>
-							<Link to="/" className="profile-option">
+							<Link to="/logout" className="profile-option">
 								Logout
 							</Link>
 						</div>
@@ -59,33 +59,43 @@ const Layout = ({ username = "Username" }) => {
 								</Link>
 							</li>
 							<li>
-								<Link to="/signin" className="dash-links">
-									Product
+								<Link to="/analytics" className="dash-links">
+									My Analytics
 								</Link>
 							</li>
 							<li>
-								<Link to="/signin" className="dash-links">
-									UI Elements
+								<Link to="/courses" className="dash-links">
+									Check courses
 								</Link>
 							</li>
 							<li>
-								<Link to="/signin" className="dash-links">
-									Pages
+								<Link to="/doubt" className="dash-links">
+									Doubt Solving
 								</Link>
 							</li>
 							<li>
-								<Link to="/signin" className="dash-links">
-									Forms
+								<Link to="/test" className="dash-links">
+									Test & Results
 								</Link>
 							</li>
 							<li>
-								<Link to="/signin" className="dash-links">
-									Graphs
+								<Link to="/timetable" className="dash-links">
+									Time-Table
 								</Link>
 							</li>
 							<li>
-								<Link to="/signin" className="dash-links">
-									Authentication
+								<Link to="/classes" className="dash-links">
+									Live classes
+								</Link>
+							</li>
+							<li>
+								<Link to="/support" className="dash-links">
+									Support
+								</Link>
+							</li>
+							<li>
+								<Link to="/contact" className="dash-links">
+									Contact
 								</Link>
 							</li>
 						</ul>

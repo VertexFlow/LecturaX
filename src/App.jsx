@@ -31,19 +31,11 @@ function App() {
 					</Route>
 					<Route path="/dashboard" element={<Layout />}>
 						<Route index element={<Dashboard />} />
-						<Route
-							path="profile"
-							element={
-								<Profile userType="student" profileData={studentProfileData} />
-							}
-						/>
+						<Route path="profile" element={<Profile />} />
 					</Route>
 					<Route path="*" element={<NoPage />} />
 				</Routes>
 			</BrowserRouter>
-
-			{/* <Profile userType="student" profileData={studentProfileData} />
-			<Profile userType="teacher" profileData={teacherProfileData} /> */}
 		</>
 	);
 }

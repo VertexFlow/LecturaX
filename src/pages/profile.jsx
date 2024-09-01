@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "../styles/profile.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 
 const Profile = () => {
 	const [activePage, setActivePage] = useState("Profile");
