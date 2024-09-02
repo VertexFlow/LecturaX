@@ -1,8 +1,10 @@
 /* Navbar Container */
 .navbar {
-    background-color: #1a202c;
+    position: fixed;
+    background: transparent;
     color: #ffffff;
-    padding: 12px 24px;
+    width: 100vw;
+    padding: 0.75rem 1.5rem;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -57,7 +59,8 @@
 }
 
 .nav-link:hover {
-    color: #a0aec0;
+    color: #fba202;
+    text-decoration: underline;
 }
 
 /* Login Button */
@@ -89,6 +92,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar {
+        background-color: #000;
+    }
+
     .menu-toggle {
         display: block;
     }
@@ -97,12 +104,14 @@
         display: none;
         flex-direction: column;
         align-items: center;
+        justify-content: start;
         position: absolute;
         top: 60px;
         left: 0;
+        height: 95vh;
         width: 100%;
-        background-color: #1a202c;
-        padding: 16px 0;
+        padding-top: 2rem;
+        background-color: #000;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 

@@ -14,10 +14,26 @@ header {
     background-color: #333;
 }
 
+#start {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+}
+
 .logo {
-    color: #ff6347;
-    font-size: 0.85em;
+    color: #FBA202;
+    font-size: 1.5em;
+    font-weight: 800;
     text-decoration: none;
+}
+
+#end {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 2rem;
 }
 
 /* Profile Dropdown */
@@ -25,46 +41,48 @@ header {
     position: relative;
 }
 
-.profile-dropdown-content {
-    display: none;
+.profile-menu {
+    display: block;
+    width: 300%;
     position: absolute;
     right: 0;
     top: 100%;
     background-color: #242424;
-    border-radius: 5px;
-    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    padding: 0.5rem 1.5rem;
     margin-top: 0.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0px 15px 5px rgba(0, 0, 0, 0.5);
     white-space: nowrap;
     z-index: 100;
+    visibility: hidden;
 }
 
-.profile-dropdown-content a {
+.profile-option {
     display: block;
     color: #fff;
     text-decoration: none;
-    padding: 0.5rem 0;
+    padding: 0.75rem 0.25rem;
 }
 
-.profile-dropdown-content a:hover {
-    color: goldenrod;
-}
-
-/* Show Dropdown on Click */
-.profile-dropdown:hover .profile-dropdown-content {
-    display: block;
+.profile-option:hover {
+    color: #FBA202;
 }
 
 .profile-dropdown span {
     font-weight: 600;
-    color: goldenrod;
+    color: #FBA202;
     cursor: pointer;
+}
+
+.profile-menu.expand {
+    visibility: visible;
 }
 
 .container {
     display: flex;
     width: 100%;
 }
+
 
 /* Sidebar Styling */
 .sidebar {
@@ -113,6 +131,23 @@ header {
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+    header {
+        padding: 0 1rem;
+    }
+
+    .logo {
+        font-size: 1.25em;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    #end {
+        gap: 0.75rem;
+        padding: 0 0.5rem;
+    }
+
     .hamburger {
         display: flex;
     }
@@ -127,5 +162,4 @@ header {
     .sidebar.open {
         transform: translateX(0);
     }
-
 }
