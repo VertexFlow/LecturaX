@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "16.20.0" 
+  },
   "name": "lecturax",
   "private": true,
   "version": "0.0.0",
