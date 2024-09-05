@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    background-color: #f8f9fa;
+    padding-top: 1rem;
 }
 
 .auth-bg {
@@ -47,7 +47,7 @@
 }
 
 .form-control {
-    width: 85%;
+    width: 100%;
     padding: 10px 20px;
     padding-left: 2.75rem;
     border: 1px solid #ced4da;
@@ -74,9 +74,9 @@
 .btn-submit {
     width: 100%;
     padding: 10px;
-    background-color: #343a40;
+    background: transparent;
     color: #ffffff;
-    border: none;
+    border: 2px solid #fba202;
     border-radius: 4px;
     cursor: pointer;
     font-size: 1rem;
@@ -84,7 +84,7 @@
 }
 
 .btn-submit:hover {
-    background-color: #23272b;
+    background: #b97900;
 }
 
 /* Additional Links */
@@ -94,15 +94,12 @@
 }
 
 .register-link,
-.forgot-password-link,
-.home-link {
+.forgot-password-link {
     margin: 10px 0;
 }
 
-.home-link {
-    float: right;
-    color: #23272b !important;
-    text-decoration: underline;
+.redirect-links{
+    color: #fba202;
 }
 
 /* Role Selector */
@@ -111,10 +108,11 @@
     margin: 0.25rem auto;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    gap: 0.5rem;
     position: relative;
     background-color: #fff;
-    padding: 0.5rem 2rem;
+    padding: 0.25rem 1.5rem;
     border-radius: 99px;
 }
 
@@ -122,7 +120,7 @@
     z-index: 2;
 }
 
-.container input[type="radio"] {
+.role-container input[type="radio"] {
     display: none;
 }
 
@@ -130,36 +128,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.25rem;
+    padding: 0.25rem 1rem;
     font-size: 1rem;
-    color: black;
+    color: #23272b;
+    background-color: #fff4de;
     font-weight: 500;
     border-radius: 99px;
     cursor: pointer;
-    transition: color 0.15s ease-in;
+    transition: color 0.25s ease-in;
 }
 
-.container input[type="radio"]:checked+label {
-    color: #185ee0;
-}
-
-.container input[id="student"]:checked~.glider {
-    transform: translateX(-10%);
-}
-
-.container input[id="teacher"]:checked~.glider {
-    transform: translateX(185%);
-}
-
-.glider {
-    position: absolute;
-    display: flex;
-    height: 2rem;
-    width: 5.25rem;
-    background-color: #e6eef9;
-    z-index: 1;
-    border-radius: 99px;
-    transition: 0.5s ease-out;
+.role-container input[type="radio"]:checked+label {
+    color: #fff;
+    background: #fba202;
 }
 
 @media (max-width: 700px) {

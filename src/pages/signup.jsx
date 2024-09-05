@@ -62,17 +62,11 @@ const Signup = () => {
 
 	return (
 		<section className="auth-section">
-			<img className="auth-bg" src="/assets/signin.jpg" alt="login" />
 			<div className="auth-container">
-				<div className="home-link">
-					<Link to="../" style={{ color: "#000" }}>
-						&larr; Back to Home
-					</Link>
-				</div>
 				<h1 className="auth-title">Create Your Account</h1>
 				<div className="form-wrapper">
 					<form method="post" action="/signup">
-						<div className="container">
+						<div className="role-container">
 							<div className="tabs">
 								<input
 									type="radio"
@@ -197,7 +191,7 @@ const Signup = () => {
 					<div className="additional-links">
 						<div className="register-link">
 							Already have an account?{" "}
-							<Link to="/signin">
+							<Link to="/signin" className="redirect-links">
 								<b>SignIn</b>
 							</Link>
 						</div>
