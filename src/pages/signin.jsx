@@ -1,11 +1,11 @@
 import React, { useRef, useState } from "react";
-import "../styles/login.css"; // Import the CSS file
+import "../styles/login.css";
 import { Link } from "react-router-dom";
 
 const Signin = () => {
   const icon = useRef();
   const pswdField = useRef();
-  const [form, setForm] = useState({ username: "", password: "" });
+  const [loginForm, setLoginForm] = useState({ username: "", password: "" });
 
   const showPassword = () => {
     if (pswdField.current.type === "password") {
@@ -19,29 +19,33 @@ const Signin = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setForm({
-      ...form,
+    setLoginForm({
+      ...loginForm,
       [name]: value,
     });
   };
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setForm({
+    setLoginForm({
       username: "",
       password: "",
     });
+    console.log(loginForm);
 
-    let res = await fetch("http://localhost:3000/signin", {
+    let res = await fetch("http://localhost:3000/api/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        username: document.getElementById("name").value,
-        password: document.getElementById("password").value,
-      }),
+      body: JSON.stringify({ ...loginForm }),
     });
     let data = await res.text();
-    alert(data);
+    if (data === "Username or password incorrect") {
+      alert(data);
+    }
+    if (data === "User logged in") {
+      alert(data);
+      window.location.href = "/dashboard";
+    }
   };
 
   return (
@@ -61,7 +65,7 @@ const Signin = () => {
                 id="username"
                 placeholder="username"
                 name="username"
-                value={form.username}
+                value={loginForm.username}
                 onChange={handleChange}
                 required
               />
@@ -86,7 +90,7 @@ const Signin = () => {
                 id="password"
                 placeholder="••••••"
                 name="password"
-                value={form.password}
+                value={loginForm.password}
                 onChange={handleChange}
                 required
               />
