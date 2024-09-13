@@ -1,142 +1,144 @@
 /* Navbar Container */
 .navbar {
-    position: fixed;
-    background: transparent;
-    color: #ffffff;
-    width: 100vw;
-    padding: 0.75rem 1.5rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  color: #ffffff;
+  width: 100vw;
+  padding: 0.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
 }
 
 /* Inner Container */
 .navbar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* Logo */
 .navbar-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fba202;
 }
 
 /* Hamburger Menu (for Mobile) */
 .menu-toggle {
-    display: none;
+  display: none;
 }
 
 .menu-button {
-    color: #ffffff;
-    background: none;
-    border: none;
-    cursor: pointer;
-    outline: none;
+  color: #ffffff;
+  background: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
 }
 
 .menu-icon {
-    height: 24px;
-    width: 24px;
-    fill: currentColor;
+  height: 24px;
+  width: 24px;
+  fill: currentColor;
 }
 
 /* Navigation Links */
 .navbar-links {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
 }
 
 .nav-link {
-    padding: 0.5rem 1rem;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1rem;
-    font-weight: 500;
+  padding: 0.5rem 1rem;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .nav-link:hover {
-    color: #fba202;
-    text-decoration: underline;
+  color: #fba202;
+  text-decoration: underline;
 }
 
 /* Login Button */
 .navbar-login {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .login-button {
-    background-color: #3182ce;
-    color: #ffffff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #fba202;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
 }
 
 .login-button:hover {
-    background-color: #2b6cb0;
+  background-color: #fba202;
 }
 
 #login-btn {
-    display: block;
+  display: block;
 }
 
 #login-mobile {
-    display: none;
+  display: none;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .navbar {
-        background-color: #000;
-    }
+  .navbar {
+    background-color: #000;
+  }
 
-    .menu-toggle {
-        display: block;
-    }
+  .menu-toggle {
+    display: block;
+  }
 
-    .navbar-links {
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        justify-content: start;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        height: 95vh;
-        width: 100%;
-        padding-top: 2rem;
-        background-color: #000;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    height: 95vh;
+    width: 100%;
+    padding-top: 2rem;
+    background-color: #000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-    .navbar-links.active {
-        display: flex;
-    }
+  .navbar-links.active {
+    display: flex;
+  }
 
-    .nav-link {
-        margin: 12px 0;
-        width: 100%;
-        text-align: center;
-    }
+  .nav-link {
+    margin: 12px 0;
+    width: 100%;
+    text-align: center;
+  }
 
-    .navbar-login {
-        margin-left: 0;
-        padding: 12px 0;
-        width: 100%;
-        text-align: center;
-    }
+  .navbar-login {
+    margin-left: 0;
+    padding: 12px 0;
+    width: 100%;
+    text-align: center;
+  }
 
-    #login-mobile {
-        display: block;
-    }
+  #login-mobile {
+    display: block;
+  }
 
-    #login-btn {
-        display: none;
-    }
+  #login-btn {
+    display: none;
+  }
 }
