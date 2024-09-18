@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import "../styles/login.css";
 import { v4 as uuidv4 } from "uuid";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Signup = () => {
   const icon = useRef();
@@ -52,20 +53,21 @@ const Signup = () => {
       alert("Passwords do not match");
       return;
     }
-    let res = await fetch("/api/signup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...form, role, id: uuidv4() }),
-    });
-    let data = await res.text();
-    console.log(data);
-    if (data === "You already have an account,please login") {
-      alert(data);
-    }
-    if (data === "User created") {
-      alert(data);
-      window.location.href = "/dashboard";
-    }
+    await axios
+      .post("/api/signup", {
+        ...form,
+        role,
+        id: uuidv4(),
+      })
+      .then((res) => {
+        console.log(res.data, res);
+        alert(res.data);
+        if (res.status === 200) window.location.href = "/dashboard";
+        if (res.status === 401) window.location.href = "/signin";
+      })
+      .catch((err) => {
+        alert(err.response.data);
+      });
   };
 
   return (

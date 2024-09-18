@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import "../styles/layout.css";
+import axios from "axios";
 
 const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -16,25 +17,28 @@ const Layout = () => {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      let user = await fetch("/api/dashboard").then((res) =>
-        res
-          .json()
-          .then((data) => setUsername(data.username))
-          .catch((err) => console.log(err))
-      );
-    };
-
-    fetchData();
+    (async () => {
+      await axios
+        .get("/api/dashboard/:id")
+        .then((res) => {
+          console.log(res.data);
+          setUsername(res.data.username);
+        })
+        .catch((err) => {
+          alert(err.response.data);
+        });
+    })();
   }, []);
 
   const handleSignout = async () => {
-    let res = await fetch("/api/signout");
-    let data = await res.text();
-    if (data === "User signed out") {
-      alert(data);
-      window.location.href = "/";
-    }
+    await axios
+      .get("/api/signout")
+      .then((res) => {
+        if (res.status === 200) window.location.href = "/";
+      })
+      .catch((err) => {
+        alert(err.response.data);
+      });
   };
 
   return (
