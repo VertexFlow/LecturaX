@@ -41,7 +41,6 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     setForm({
       username: "",
       email: "",
@@ -53,21 +52,18 @@ const Signup = () => {
       alert("Passwords do not match");
       return;
     }
-    await axios
-      .post("/api/signup", {
+    try {
+      let res = await axios.post("/api/signup", {
         ...form,
         role,
         id: uuidv4(),
-      })
-      .then((res) => {
-        console.log(res.data, res);
-        alert(res.data);
-        if (res.status === 200) window.location.href = "/dashboard";
-        if (res.status === 401) window.location.href = "/signin";
-      })
-      .catch((err) => {
-        alert(err.response.data);
       });
+      alert(res.data);
+      if (res.status === 200) window.location.href = "/dashboard";
+      if (res.status === 401) window.location.href = "/signin";
+    } catch (err) {
+      alert(err.message);
+    }
   };
 
   return (
@@ -115,7 +111,7 @@ const Signup = () => {
                 placeholder="username"
                 name="username"
                 value={form.username}
-                required
+                required={true}
                 onChange={handleChange}
               />
             </div>
@@ -135,7 +131,7 @@ const Signup = () => {
                 placeholder="jane@doe.com"
                 name="email"
                 value={form.email}
-                required
+                required={true}
                 onChange={handleChange}
               />
             </div>
@@ -160,7 +156,7 @@ const Signup = () => {
                 placeholder="Password"
                 name="password"
                 value={form.password}
-                required
+                required={true}
                 onChange={handleChange}
               />
             </div>
@@ -185,7 +181,7 @@ const Signup = () => {
                 placeholder="Re-enter your password"
                 name="c_password"
                 value={form.c_password}
-                required
+                required={true}
                 onChange={handleChange}
               />
             </div>

@@ -43,7 +43,7 @@ const Signin = () => {
         if (res.status === 401) window.location.href = "/signup";
       })
       .catch((err) => {
-        alert(err.response.data);
+        alert(err.message);
       });
   };
 

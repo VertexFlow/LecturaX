@@ -12,6 +12,8 @@ const User = require("./models/userModel.js");
 const MongoStore = require("connect-mongo");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
+const passport = require("passport");
+const LocalStrategy = require("passport-local");
 
 const userRouter = require("./routes/userRouter.js");
 const dashboardRouter = require("./routes/dashboardRouter.js");
@@ -58,9 +60,16 @@ const sessionOptions = {
 
 app.use(session(sessionOptions));
 
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate()));
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 // Routers
-app.use("/api/", userRouter);
-app.use("/api/dashboard/:id", dashboardRouter);
+app.use("/api", userRouter);
+app.use("/api/dashboard", dashboardRouter);
 
 app.all("*", (req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));

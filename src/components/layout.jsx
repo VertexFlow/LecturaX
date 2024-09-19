@@ -7,6 +7,7 @@ const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [dropdown, setDropdown] = useState(false);
   const [username, setUsername] = useState("");
+  const [role, setRole] = useState("");
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
@@ -19,13 +20,14 @@ const Layout = () => {
   useEffect(() => {
     (async () => {
       await axios
-        .get("/api/dashboard/:id")
+        .get("/api/dashboard/")
         .then((res) => {
-          console.log(res.data);
           setUsername(res.data.username);
+          setRole(res.data.role);
         })
         .catch((err) => {
           alert(err.response.data);
+          if (err.response.status === 401) window.location.href = "/signin";
         });
     })();
   }, []);
