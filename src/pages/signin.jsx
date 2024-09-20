@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import "../styles/login.css";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Signin = () => {
   const icon = useRef();
@@ -31,21 +32,19 @@ const Signin = () => {
       username: "",
       password: "",
     });
-    console.log(loginForm);
 
-    let res = await fetch("http://localhost:3000/api/signin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...loginForm }),
-    });
-    let data = await res.text();
-    if (data === "Username or password incorrect") {
-      alert(data);
-    }
-    if (data === "User logged in") {
-      alert(data);
-      window.location.href = "/dashboard";
-    }
+    await axios
+      .post("/api/signin", {
+        ...loginForm,
+      })
+      .then((res) => {
+        alert(res.data);
+        if (res.status === 200) window.location.href = "/dashboard";
+        if (res.status === 401) window.location.href = "/signup";
+      })
+      .catch((err) => {
+        alert(err.message);
+      });
   };
 
   return (
@@ -103,7 +102,7 @@ const Signin = () => {
             <button
               type="submit"
               className="btn btn-submit"
-              onClick={() => handleLogin}
+              onClick={handleLogin}
             >
               Login
             </button>

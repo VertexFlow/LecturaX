@@ -1,0 +1,20 @@
+.notFound {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  padding-top: 6rem;
+}
+
+.notFound h1 {
+  font-size: 4rem;
+  margin: 0;
+  padding: 0 1rem;
+  color: #fba202;
+}
+
+.notFound p {
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+}

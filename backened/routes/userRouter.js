@@ -3,63 +3,45 @@ const router = express.Router();
 const userModel = require("../models/userModel.js");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const wrapAsync = require("../utils/wrapAsync.js");
+const passport = require("passport");
 
 // const userController = require("../controllers/users.js");
 
-router.post("/signup", async function (req, res) {
-  try {
-    let { username, email, password, role } = req.body;
+router.post(
+  "/signup",
+  wrapAsync(async (req, res) => {
+    try {
+      let { username, email, password, role } = req.body;
+      const newUser = new userModel({ username, email, role });
+      const registeredUser = await userModel.register(newUser, password);
+      console.log(registeredUser);
+      res.send("User registered successfully");
+      // res.redirect("http://localhost:3000/");
+    } catch (err) {
+      res.send(err.message);
+    }
+  })
+);
 
-    let user = await userModel.findOne({ username: username });
-    if (user)
-      return res.status(401).send("You already have an account,please login");
-
-    bcrypt.genSalt(10, function (err, salt) {
-      bcrypt.hash(password, salt, async function (err, hash) {
-        if (err) return res.send(err.message);
-        else {
-          let user = await userModel.create({
-            username,
-            email,
-            password: hash,
-            role,
-          });
-
-          let token = jwt.sign({ username, id: user._id }, "heyheyhey");
-          res.cookie("token", token);
-          res.send("User created");
-        }
-      });
-    });
-  } catch (err) {
-    res.send(err.message);
+router.post(
+  "/signin",
+  passport.authenticate("local", {
+    failureRedirect: "/api/signin",
+    failureFlash: true,
+  }),
+  async (req, res) => {
+    res.send("User signed in successfully");
   }
-});
+);
 
-router.post("/signin", async function (req, res) {
-  try {
-    let { username, password } = req.body;
-
-    let user = await userModel.findOne({ username: username });
-    if (!user) return res.status(401).send("User not registered");
-
-    bcrypt.compare(password, user.password, function (err, result) {
-      if (result) {
-        let token = jwt.sign({ username, id: user._id }, "heyheyhey");
-        res.cookie("token", token);
-        res.send("User logged in");
-      } else {
-        res.send("Username or password incorrect");
-      }
-    });
-  } catch (err) {
-    res.send(err.message);
-  }
-});
-
-router.get("/signout", function (req, res) {
-  res.clearCookie("token");
-  res.send("User signed out");
+router.get("/signout", (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.send("User signed out successfully");
+  });
 });
 
 module.exports = router;
