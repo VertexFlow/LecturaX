@@ -1,266 +1,272 @@
 /* Hero Section */
 .hero {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
-    padding: 10rem 0;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 10rem 0;
+  text-align: center;
 }
 
-/* .video-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    z-index: -1;
-} */
-
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 110%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.25;
+  z-index: -1;
+}
 
 .hero-head {
-    font-size: 4rem;
-    line-height: 1.2;
-    padding: 0 15rem;
+  font-size: 4rem;
+  line-height: 1.2;
+  padding: 0 15rem;
 }
 
 .hero-head span {
-    font-size: 5rem;
-    font-weight: bold;
-    color: #fba202;
-    padding: 0 1rem;
+  font-size: 5rem;
+  font-weight: bold;
+  color: #fba202;
+  padding: 0 1rem;
 }
 
 .hero-subhead {
-    font-size: 1.5rem;
-    padding: 0 6rem;
-    color: #888;
+  font-size: 1.5rem;
+  padding: 0 6rem;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.75rem;
 }
 
 .cta-btn {
-    padding: 0.75rem 1.5rem;
-    margin-top: 1.75rem;
-    border-radius: 5px;
-    background-color: transparent;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    border: 1px solid #fba202;
-    transition: all 0.5s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  background-color: #fba202;
+  color: #000;
+  font-size: 1.2rem;
+  transition: all 0.5s ease;
+  text-decoration: none;
 }
 
 .cta-btn:hover {
-    background-color: #fba202;
-    color: #000000;
+  background-color: #fff;
+  color: #000000;
 }
 
 /* ----------------------------------- */
 
 /* Features Section */
 .features {
-    padding: 2rem 5rem;
-    background-color: #0a0a0a;
+  padding: 2rem 5rem;
+  background-color: #0a0a0a;
 }
 
 .features-head {
-    font-size: 3rem;
-    font-weight: bold;
-    text-align: center;
-    padding-bottom: 3rem;
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 3rem;
 }
 
 .features-head span {
-    color: #fba202;
-    font-size: 3.25rem;
-    padding: 0 0.5rem;
+  color: #fba202;
+  font-size: 3.25rem;
+  padding: 0 0.5rem;
 }
 
 .features-subhead {
-    font-size: 1.5rem;
-    text-align: center;
-    color: #888;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #888;
 }
 
 .feature-container {
-    padding: 2rem 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
 }
 
 .feature-item {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem;
 }
 
 .feature-title {
-    font-size: 2rem;
-    color: #fba202;
+  font-size: 2rem;
+  color: #fba202;
 }
 
 .feature-desc {
-    font-size: 1.25rem;
-    color: #888;
+  font-size: 1.25rem;
+  color: #888;
 }
 
 .feature-img {
-    object-fit: cover;
-    object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .feature-about {
-    width: 50%;
+  width: 50%;
 }
 
 .feature-item.reverse {
-    flex-direction: row-reverse;
+  flex-direction: row-reverse;
 }
 
 /* ----------------------------------- */
 
 /* Testimonial Section */
 .testimonials {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5rem 3rem;
-    gap: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 3rem;
+  gap: 1rem;
 }
 
 .testimonial-caption {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: lighter;
-    letter-spacing: 10px;
-    text-align: center;
-    color: #555;
-    padding-bottom: 3rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: lighter;
+  letter-spacing: 10px;
+  text-align: center;
+  color: #555;
+  padding-bottom: 3rem;
 }
 
 .testimonial-title {
-    font-size: 3rem;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 3rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
 }
 
 .testimonial-subtitle {
-    font-size: 1.25rem;
-    color: #888;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 1.25rem;
+  color: #888;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .scroll-wrapper {
-    overflow: hidden;
-    width: 100%;
-    display: flex;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
 }
 
 .testimonial-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 .carousel-primary,
 .carousel-secondary {
-    overflow: hidden;
-    display: flex;
-    justify-content: space-evenly;
-    gap: 1rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
 }
 
 .carousel-primary {
-    animation: scroll 60s linear infinite;
+  animation: scroll 60s linear infinite;
 }
 
 .carousel-secondary {
-    animation: scroll-reverse 60s linear infinite;
+  animation: scroll-reverse 60s linear infinite;
 }
 
 .testimonial-card {
-    min-width: 25rem;
-    border-radius: 10px;
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    color: #000000;
-    font-size: 1rem;
-    padding: 1rem 1.5rem;
+  min-width: 25rem;
+  border-radius: 10px;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  color: #000000;
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
 }
 
 .testimonial-card p {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
 @keyframes scroll {
-    0% {
-        transform: translateX(-100%);
-    }
+  0% {
+    transform: translateX(-100%);
+  }
 
-    100% {
-        transform: translateX(30%);
-    }
+  100% {
+    transform: translateX(30%);
+  }
 }
 
 @keyframes scroll-reverse {
-    0% {
-        transform: translateX(30%);
-    }
+  0% {
+    transform: translateX(30%);
+  }
 
-    100% {
-        transform: translateX(-100%);
-    }
+  100% {
+    transform: translateX(-100%);
+  }
 }
 
 .carousel-primary:hover,
 .carousel-secondary:hover {
-    -webkit-animation-play-state: paused;
-    -moz-animation-play-state: paused;
-    -o-animation-play-state: paused;
-    animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -o-animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 /* ----------------------------------- */
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
-    .hero {
-        padding: 10rem 0;
-    }
+  .hero {
+    padding: 10rem 0;
+  }
 
-    .hero-head {
-        font-size: 2rem;
-        padding: 0 1.5rem;
-    }
+  .hero-head {
+    font-size: 2rem;
+    padding: 0 1.5rem;
+  }
 
-    .hero-head span {
-        font-size: 2.5rem;
-    }
+  .hero-head span {
+    font-size: 2.5rem;
+  }
 
-    .hero-subhead {
-        font-size: 1.25rem;
-        padding: 0 1rem;
-    }
+  .hero-subhead {
+    font-size: 1.25rem;
+    padding: 0 1rem;
+  }
 
-    .cta-btn {
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        margin-top: 1rem;
-    }
+  .cta-btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
 
-    .scroll-wrapper {
-        width: 100%;
-    }
+  .scroll-wrapper {
+    width: 100%;
+  }
 
-    .testimonial-card {
-        min-width: 250px;
-        font-size: 0.9rem;
-    }
-
+  .testimonial-card {
+    min-width: 250px;
+    font-size: 0.9rem;
+  }
 }
