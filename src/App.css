@@ -18,3 +18,8 @@
   font-size: 2rem;
   padding: 0.5rem 1rem;
 }
+
+.Toastify__toast-container {
+  top: 11% !important;
+  z-index: 9999 !important;
+}

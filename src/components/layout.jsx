@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import "../styles/layout.css";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Layout = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const redirect = useNavigate();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [username, setUsername] = useState("");
   const [role, setRole] = useState("");
@@ -26,8 +28,8 @@ const Layout = () => {
           setRole(res.data.role);
         })
         .catch((err) => {
-          alert(err.response.data);
-          if (err.response.status === 401) window.location.href = "/signin";
+          toast.error(err.response.data);
+          redirect("/signin", { replace: true });
         });
     })();
   }, []);
@@ -36,10 +38,11 @@ const Layout = () => {
     await axios
       .get("/api/signout")
       .then((res) => {
-        if (res.status === 200) window.location.href = "/";
+        toast.success(res.data);
+        redirect("/", { replace: true });
       })
       .catch((err) => {
-        alert(err.response.data);
+        toast.error(err.response.data);
       });
   };
 
@@ -52,7 +55,7 @@ const Layout = () => {
             <span></span>
             <span></span>
           </div>
-          <Link to="/" className="logo">
+          <Link to="/dashboard" className="logo">
             LecturaX
           </Link>
         </div>

@@ -9,6 +9,9 @@ import Dashboard from "./pages/dashboard";
 import Profile from "./pages/profile";
 import Canvas from "./components/canvas";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   return (
     <>
@@ -25,6 +28,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
           </Route>
         </Routes>
+        <ToastContainer />
       </BrowserRouter>
     </>
   );
