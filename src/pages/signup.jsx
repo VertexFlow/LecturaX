@@ -1,10 +1,12 @@
 import React, { useRef, useState } from "react";
 import "../styles/login.css";
 import { v4 as uuidv4 } from "uuid";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Signup = () => {
+  const redirect = useNavigate();
   const icon = useRef();
   const icon_c = useRef();
   const pswdField = useRef();
@@ -58,11 +60,10 @@ const Signup = () => {
         role,
         id: uuidv4(),
       });
-      alert(res.data);
-      if (res.status === 200) window.location.href = "/dashboard";
-      if (res.status === 401) window.location.href = "/signin";
+      toast.success(res.data);
+      redirect("/dashboard", { replace: true });
     } catch (err) {
-      alert(err.message);
+      toast.error(err.response.data);
     }
   };
 

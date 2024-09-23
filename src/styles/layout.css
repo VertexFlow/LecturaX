@@ -8,7 +8,6 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
   height: 4rem;
   padding: 0 2rem;
   background-color: #333;
@@ -42,10 +41,10 @@ header {
 
 .profile-menu {
   display: block;
-  width: 300%;
+  width: 12rem;
   position: absolute;
   right: 0;
-  top: 100%;
+  top: 120%;
   background-color: #242424;
   border-radius: 15px;
   padding: 0.5rem 1.5rem;
@@ -89,10 +88,8 @@ header {
 .sidebar {
   width: 15%;
   background-color: #242424;
-  padding: 2rem;
+  padding: 3rem 2rem;
   border-radius: 10px;
-  height: calc(100vh - 4rem);
-  transform: translateX(-100%);
   transition: transform 0.3s ease;
 }
 
@@ -102,10 +99,14 @@ header {
 
 .sidebar nav ul {
   list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  gap: 2.25rem;
 }
 
 .sidebar nav ul li {
-  padding: 1rem 0;
   cursor: pointer;
 }
 
@@ -113,6 +114,10 @@ header {
   color: #fff;
   text-decoration: none;
   font-size: 1.1em;
+}
+
+.dash-links:hover {
+  color: #fba202;
 }
 
 /* Hamburger Menu */

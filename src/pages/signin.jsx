@@ -1,9 +1,11 @@
 import React, { useRef, useState } from "react";
 import "../styles/login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Signin = () => {
+  const redirect = useNavigate();
   const icon = useRef();
   const pswdField = useRef();
   const [loginForm, setLoginForm] = useState({ username: "", password: "" });
@@ -38,12 +40,11 @@ const Signin = () => {
         ...loginForm,
       })
       .then((res) => {
-        alert(res.data);
-        if (res.status === 200) window.location.href = "/dashboard";
-        if (res.status === 401) window.location.href = "/signup";
+        toast.success(res.data);
+        redirect("/dashboard", { replace: true });
       })
       .catch((err) => {
-        alert(err.message);
+        toast.error(err.response.data);
       });
   };
 
